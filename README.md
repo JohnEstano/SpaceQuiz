@@ -1,5 +1,7 @@
 # SpaceQuiz
 
+![Preview of SpaceQuiz](spacequiz.png)
+
 A space shooter quiz game built with HTML, CSS, and Vanilla JavaScript.
 
 ---
@@ -10,17 +12,16 @@ A space shooter quiz game built with HTML, CSS, and Vanilla JavaScript.
 This project was created during the AI-assisted Frontend Hackathon.
 
 ---
-
 ## What's New?
 
-Fixed visual bugs
-Fixed Ogre layouts
-Added Ogre animations
-Added Ship animations
-Added win and lose sequence
-Added scores
-Added more questions
-Added more soundfx
+- Fixed visual bugs
+- Fixed Ogre layouts
+- Added Ogre animations
+- Added Ship animations
+- Added win and lose sequence
+- Added scores
+- Added more questions
+- Added more soundfx
 
 
 

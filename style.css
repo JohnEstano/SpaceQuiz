@@ -278,7 +278,7 @@ body {
     -webkit-text-fill-color: transparent;
     animation: rainbow-gradient 4s ease-in-out infinite;
     font-weight: bold;
-    text-align: right;
+    text-align: center;
 }
 
 @keyframes rainbow-gradient {
