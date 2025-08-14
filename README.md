@@ -11,7 +11,19 @@ This project was created during the AI-assisted Frontend Hackathon.
 
 ---
 
-## Event Details
+## What's New?
+
+Fixed visual bugs
+Fixed Ogre layouts
+Added Ogre animations
+Added Ship animations
+Added win and lose sequence
+Added scores
+Added more questions
+
+
+
+## More Details
 
 - **Event:** Exam Day AI-assisted Frontend Hackathon: The 90-Minute Vanilla JS Challenge  
 - **Date:** August 12, 2025  
@@ -25,3 +37,5 @@ This project was created during the AI-assisted Frontend Hackathon.
 This project is a continuation of the [PrelimExams Repository](https://github.com/JohnEstano/PrelimExam).
 
 ---
+
+
