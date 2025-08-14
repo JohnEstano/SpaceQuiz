@@ -1,12 +1,27 @@
-
 # SpaceQuiz
-# Space shooter quiz game
 
-# AI-assisted Frontend Hackathon: The 90-Minute Vanilla JS Challenge
-### - Event Date: August 12, 2025
-### - Duration: 1.5 Hours (90 minutes)
-### - Challenge Focus: UI/UX Enhancement using HTML, CSS, & Vanilla JavaScript
+A space shooter quiz game built with HTML, CSS, and Vanilla JavaScript.
 
+---
 
-### - *This project is a continuation of the PrelimExams repository*
-[PrelimExams Repository](https://github.com/JohnEstano/PrelimExam)
+## About
+
+**SpaceQuiz** is a fast-paced quiz game where you defeat the ogre by answering questions correctly.  
+This project was created during the AI-assisted Frontend Hackathon.
+
+---
+
+## Event Details
+
+- **Event:** AI-assisted Frontend Hackathon: The 90-Minute Vanilla JS Challenge  
+- **Date:** August 12, 2025  
+- **Duration:** 1.5 Hours (90 minutes)  
+- **Focus:** UI/UX Enhancement using HTML, CSS, & Vanilla JavaScript
+
+---
+
+## Related Projects
+
+This project is a continuation of the [PrelimExams Repository](https://github.com/JohnEstano/PrelimExam).
+
+---
