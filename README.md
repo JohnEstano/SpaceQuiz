@@ -13,7 +13,7 @@ This project was created during the AI-assisted Frontend Hackathon.
 
 ## Event Details
 
-- **Event:** AI-assisted Frontend Hackathon: The 90-Minute Vanilla JS Challenge  
+- **Event:** Exam Day AI-assisted Frontend Hackathon: The 90-Minute Vanilla JS Challenge  
 - **Date:** August 12, 2025  
 - **Duration:** 1.5 Hours (90 minutes)  
 - **Focus:** UI/UX Enhancement using HTML, CSS, & Vanilla JavaScript
