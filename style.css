@@ -1,0 +1,302 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+    font-family: sans-serif;
+    min-height: 100vh;
+    background-color: #000;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#space-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    background: radial-gradient(ellipse at bottom, #222 0%, #000 100%);
+}
+
+/* keep quiz-content position:relative so projectile absolute coords are relative to it
+   and make the background transparent so #space-bg shows through during gameplay */
+#quiz-content {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    /* make transparent so the space-bg is visible during the game */
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+/* results container (end screen) — keep its background transparent as well so the ambiance shows */
+#results-container {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.quiz-container {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 500px;
+    text-align: center;
+}
+
+.options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.options button {
+    flex: 1 1 120px;
+    min-width: 120px;
+    max-width: 100%;
+    padding: 1rem 0.5rem;
+    margin: 0;
+    border: 3px solid #fff;
+    background: #222;
+    color: #fff;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 0.85rem;
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px #000, 0 4px 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    position: relative;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.options button:hover, .options button:focus {
+    background: #3fa34d;
+    color: #fff;
+    transform: scale(1.08);
+    box-shadow: 0 0 0 6px #3fa34d, 0 8px 24px rgba(63,163,77,0.2);
+    z-index: 2;
+}
+
+.options button::after {
+    content: "★";
+    position: absolute;
+    top: -18px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: #fff;
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.progress-bar {
+    width: 0%;
+    height: 10px;
+    background-color: #4caf50;
+    border-radius: 5px;
+}
+
+.dialogue-bubble {
+    position: relative;
+    background: #222;
+    color: #fff;
+    border: 4px solid #fff;
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin: 1.5rem auto;
+    width: 90%;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    box-shadow: 0 0 0 8px #000, 0 8px 24px rgba(0,0,0,0.3);
+    text-align: left;
+}
+
+.bubble-tail {
+    position: absolute;
+    left: 50%;
+    bottom: -20px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 20px solid #222;
+    border-top-color: #222;
+}
+
+.dialogue-bubble p {
+    margin: 0;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+/* Ogre: outer handles dodge (translateX); inner handles breathing (translateY) */
+.ogre-character {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    height: 96px;
+    will-change: transform;
+    z-index: 3;
+}
+
+.ogre-inner {
+    display: inline-block;
+    animation: ogre-breathe 1.2s infinite ease-in-out;
+}
+
+@keyframes ogre-breathe {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-8px); }
+    100% { transform: translateY(0); }
+}
+
+.ogre-character svg {
+    width: 96px;
+    height: 96px;
+}
+
+.shooter-ship {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 32px;
+    height: 64px;
+    animation: ship-idle 1s infinite alternate;
+    z-index: 2;
+}
+
+@keyframes ship-idle {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-8px); }
+}
+
+.shooter-ship.shooting {
+    animation: ship-shoot 0.2s;
+}
+
+@keyframes ship-shoot {
+    0%   { transform: scale(1) translateY(-8px); filter: brightness(1); }
+    50%  { transform: scale(1.1) translateY(-16px); filter: brightness(1.5); }
+    100% { transform: scale(1) translateY(-8px); filter: brightness(1); }
+}
+
+#projectile {
+    position: absolute;
+    width: 4px;
+    height: 24px;
+    background: linear-gradient(to top, #ffe066 60%, #fff700 100%);
+    border-radius: 2px;
+    box-shadow: 0 0 8px 2px #ffe066;
+    pointer-events: none;
+    z-index: 10;
+    display: none;
+    left: 0;
+    top: 0;
+    transform: translate(-50%, -50%);
+}
+
+.ogre-hit {
+    animation: ogre-hit-anim 0.3s;
+}
+
+@keyframes ogre-hit-anim {
+    0% { transform: scale(1) translateY(0); }
+    50% { transform: scale(1.18) translateY(-6px); }
+    100% { transform: scale(1) translateY(0); }
+}
+
+.ogre-dodge-right {
+    transform: translateX(38px); /* was probably higher before */
+}
+
+/* visual damage tint */
+.ogre-red {
+    filter: drop-shadow(0 0 16px #ff2222) brightness(1.3) sepia(0.7) hue-rotate(-30deg);
+    transition: filter 0.2s;
+}
+
+@media (max-width: 600px) {
+    .dialogue-bubble {
+        padding: 1rem 0.5rem;
+        font-size: 0.8rem;
+    }
+    .options button {
+        font-size: 0.7rem;
+        min-width: 90px;
+        padding: 0.7rem 0.3rem;
+    }
+    .quiz-container {
+        width: 98vw;
+        min-width: 0;
+        padding: 0.5rem;
+    }
+}
+
+.rainbow-text {
+    background: linear-gradient(270deg, #ff0080, #ff8c00, #40e0d0, #8a2be2, #ff0080);
+    background-size: 800% 800%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-gradient 4s ease-in-out infinite;
+    font-weight: bold;
+    text-align: right;
+}
+
+@keyframes rainbow-gradient {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+/* Score text below options, styled like dialogue bubble text */
+#score-text {
+    text-align: center;
+    margin-top: 16px;
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1rem;
+    color: #fff;
+    letter-spacing: 1px;
+    text-shadow: 0 0 0 4px #000, 0 2px 8px rgba(0,0,0,0.3);
+    background: none;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+}

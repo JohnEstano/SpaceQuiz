@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>SpaceQuiz</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div id="space-bg"></div>
+
+    <div id="start-menu">
+        <div class="dialogue-bubble">
+              <h1 style="font-size:3rem;text-align:center;margin-bottom:1rem;color: #3fa34d;">SpaceQuiz</h1>
+            <img src="flower.png" alt="Flower" style="width:64px;height:64px;display:block;margin:0 auto 1rem auto;">
+            <p style="text-align:center; font-size:1.1rem; margin:0;"></p>
+                Welcome to the Space Quiz!<br>
+                Defeat the ogre by answering questions.<br>
+                Ready to play?
+            </p>
+            <br><br>
+            <p class="rainbow-text" style="font-size:1.2rem;">by JohnEstano</p>
+           
+        </div>
+        <div class="options">
+            <button id="play-btn">Play</button>
+        </div>
+
+
+       
+    </div>
+
+    <!-- quiz-content must be position:relative so projectile absolute coords are correct -->
+    <div id="quiz-content" style="display:none;">
+        <div class="progress-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+
+        <div class="dialogue-bubble">
+            <p id="question-text">Question goes here...</p>
+            <div class="bubble-tail"></div>
+        </div>
+
+        <!-- Ogre: outer container for dodge; inner for breathing -->
+        <div class="ogre-character" id="ogre-character">
+            <div class="ogre-inner">
+                <svg width="96" height="96" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <rect x="3" y="3" width="10" height="10" fill="#3fa34d" stroke="#222" stroke-width="1"/>
+                    <rect x="5" y="5" width="2" height="2" fill="#fff"/>
+                    <rect x="9" y="5" width="2" height="2" fill="#fff"/>
+                    <rect x="6" y="8" width="4" height="2" fill="#222"/>
+                    <rect x="2" y="2" width="2" height="2" fill="#3fa34d"/>
+                    <rect x="12" y="2" width="2" height="2" fill="#3fa34d"/>
+                    <rect x="4" y="12" width="2" height="2" fill="#3fa34d"/>
+                    <rect x="10" y="12" width="2" height="2" fill="#3fa34d"/>
+                    <rect x="1" y="1" width="1" height="2" fill="#fff"/>
+                    <rect x="14" y="1" width="1" height="2" fill="#fff"/>
+                </svg>
+            </div>
+        </div>
+
+        <div style="height: 140px;"></div>
+
+        <div class="shooter-ship" id="shooter-ship">
+            <img src="ship.png" alt="Ship" width="96" height="96" style="image-rendering: pixelated;">
+        </div>
+
+        <div id="projectile"></div>
+
+        <div id="options-container" class="options"></div>
+        
+        <div id="score-text" style="text-align:center; margin-top: 16px;">Score: 0</div>
+    </div>
+
+    <div id="results-container" class="results" style="display: none;">
+        <div class="dialogue-bubble">
+            <h1 id="end-title" style="font-size:3rem;text-align:center;margin-bottom:1rem;"></h1>
+            <p id="final-score" style="text-align:center"></p>
+        </div>
+        <div class="options">
+            <button id="retry-btn">Retry</button>
+        </div>
+    </div>
+
+    <audio id="space-music" src="sounds/music.mp3" loop style="display:none"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
